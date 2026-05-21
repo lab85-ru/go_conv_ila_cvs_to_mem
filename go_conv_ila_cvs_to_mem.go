@@ -143,7 +143,7 @@ func main() {
 				s = s + "_";
 			}
 		}
-		file_out.WriteString(s + "\r")
+		file_out.WriteString(s + "\r\n")
 	}
 
 	//----------------------------------------------------------------------
@@ -159,43 +159,43 @@ func main() {
 
 	var str string
 
-	str = fmt.Sprintf("// This file generation from: go_conv_ila_cvs_to_mem\r")
+	str = fmt.Sprintf("// This file generation from: go_conv_ila_cvs_to_mem\r\n")
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("// Vivado ILA(CSV) -> Verilog/ModelSim memory file\r")
+	str = fmt.Sprintf("// Vivado ILA(CSV) -> Verilog/ModelSim memory file\r\n")
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("\r")
+	str = fmt.Sprintf("\r\n")
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("reg [%d:0] ram_adr = 0;\r", memory_adr_bits-1)
+	str = fmt.Sprintf("reg [%d:0] ram_adr = 0;\r\n", memory_adr_bits-1)
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("reg [%d:0] ram_mem [ %d : 0];\r", output_bits-1, len(array_str)-1)
+	str = fmt.Sprintf("reg [%d:0] ram_mem [ %d : 0];\r\n", output_bits-1, len(array_str)-1)
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("reg [%d:0] ram_data = 0;\r", output_bits-1)
+	str = fmt.Sprintf("reg [%d:0] ram_data = 0;\r\n", output_bits-1)
 	file_out_v.WriteString(str)
 	
-	str = fmt.Sprintf("localparam RAM_DATA_END = %d;\r", len(array_str)-1)
+	str = fmt.Sprintf("localparam RAM_DATA_END = %d;\r\n", len(array_str)-1)
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("\r")
+	str = fmt.Sprintf("\r\n")
 	file_out_v.WriteString(str)
 	
-	str = fmt.Sprintf("initial\r")
+	str = fmt.Sprintf("initial\r\n")
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("begin\r")
+	str = fmt.Sprintf("begin\r\n")
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("    $display(\"load RAM from file: %s\");\r", file_name_out_str)
+	str = fmt.Sprintf("    $display(\"load RAM from file: %s\");\r\n", file_name_out_str)
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("    $readmemb(\"%s\", ram_mem);\r", file_name_out_str)
+	str = fmt.Sprintf("    $readmemb(\"%s\", ram_mem);\r\n", file_name_out_str)
 	file_out_v.WriteString(str)
 
-	str = fmt.Sprintf("end\r")
+	str = fmt.Sprintf("end\r\n")
 	file_out_v.WriteString(str)
 
 }
